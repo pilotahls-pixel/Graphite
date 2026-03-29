@@ -22,13 +22,16 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
+      - name: Create API_KEYS file
+        run: |
+          echo "APP_ID=${{ secrets.API_ID }}" > API_KEYS
+          echo "APP_HASH=${{ secrets.API_HASH }}" >> API_KEYS
+          echo "MAPS_V2_API=" >> API_KEYS
+
       - name: Grant execute permission
         run: chmod +x gradlew
 
       - name: Build APK
-        env:
-          APP_ID: ${{ secrets.API_ID }}
-          APP_HASH: ${{ secrets.API_HASH }}
         run: ./gradlew assembleAfatRelease
 
       - name: Upload APK
