@@ -27,8 +27,8 @@ jobs:
 
       - name: Build APK
         env:
-          APP_ID: ${{ secrets.APP_ID }}
-          APP_HASH: ${{ secrets.APP_HASH }}
+          APP_ID: ${{ secrets.API_ID }}
+          APP_HASH: ${{ secrets.API_HASH }}
         run: ./gradlew assembleAfatRelease
 
       - name: Upload APK
