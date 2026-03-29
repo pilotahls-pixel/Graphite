@@ -26,6 +26,9 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build APK
+        env:
+          APP_ID: ${{ secrets.APP_ID }}
+          APP_HASH: ${{ secrets.APP_HASH }}
         run: ./gradlew assembleAfatRelease
 
       - name: Upload APK
